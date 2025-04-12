@@ -1,0 +1,25 @@
+BoxLayout:
+ orientation: 'vertical'
+ padding: 20
+ spacing: 10
+Label:
+ text: "Балістичний калькулятор АЗП С-60"
+ font_size: 24
+TextInput:
+ id: distance_input
+ hint_text: "Дистанція до цілі (м)"
+ input_filter: 'int'
+TextInput:
+ id: angle_input
+ hint_text: "Кут наведення (°)"
+ input_filter: 'float'
+Spinner:
+ id: shell_spinner
+ text: "Вибери снаряд"
+ values: ["OF-57", "BR-281"]
+Button:
+ text: "Розрахувати"
+ on_press: app.calculate()
+Label:
+ id: result_label
+ text: ""
