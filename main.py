@@ -9,14 +9,18 @@ SHELLS = {
 class BallisticApp(App):
     def build(self):
         return BoxLayout()
-def calculate(self):
-    distance = float(self.root.ids.distance_input.text)
-    angle = float(self.root.ids.angle_input.text)
-    shell = self.root.ids.shell_spinner.text
-    v0 = SHELLS[shell]["v0"]
+    def calculate(self):
+        try:
+            distance = float(self.root.ids.distance_input.text)
+            angle = float(self.root.ids.angle_input.text)
+            shell = self.root.ids.shell_spinner.text
+            v0 = SHELLS[shell]["v0"]
 
-    time, height = calculate_trajectory(v0, angle, distance)
-    result = f"Час польоту: {time} с\nВисота: {height} м"
-    self.root.ids.result_label.text = result
+            time, height = calculate_trajectory(v0, angle, distance)
+            result = f"Час польоту: {time} с\nВисота: {height} м"
+        except Exception as e:
+            result = f"Error : {str(e)}"
+        self.root.ids.result_label.text = result
+
 if __name__ == "__main__":
     BallisticApp().run()
